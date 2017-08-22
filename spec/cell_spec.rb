@@ -9,7 +9,6 @@
 require_relative '../lib/cell'
 
 describe Cell do
-
   context "Cell is alive" do
     let(:cell) { Cell.new(1) }
 
@@ -49,6 +48,4 @@ describe Cell do
       expect(cell.dead?).to be_truthy
     end
   end
-
-
 end

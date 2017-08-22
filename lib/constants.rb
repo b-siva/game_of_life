@@ -15,36 +15,3 @@ module Constants
     [0,-1], [0,1], [-1,0], [-1,-1], [-1, 1], [1,0], [1, -1], [1,1]
   ]
 end
-
-# def initial_state
-#       @graph.each_with_index do |row, i|
-#         row.each_with_index do |col, j|
-#           @graph[i][j] = Cell.new(@graph[i][j])
-#         end
-#       end
-#     end
-
-#     def final_state
-#        @graph.each_with_index do |row, i|
-#         row.each_with_index do |col, j|
-#           @graph[i][j] = @graph[i][j].current_state
-#         end
-#       end
-#     end
-
-#     def new_state
-#       @graph.each_with_index do |row, i|
-#         row.each_with_index do |col, j|
-#           @graph[i][j].current_state = @graph[i][j].future_state
-#         end
-#       end
-#     end
-# def print_values
-#     @graph.each_with_index do |row, i|
-#       row.each_with_index do |col, j|
-#         print @graph[i][j]
-#         print " "
-#       end
-#       puts
-#     end
-#   end

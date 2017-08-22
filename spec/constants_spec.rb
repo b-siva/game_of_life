@@ -34,5 +34,4 @@ describe Constants do
       expect(Constants::NEIGHBOURS.first).to be_instance_of(Array)
     end
   end
-
 end

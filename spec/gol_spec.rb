@@ -61,9 +61,5 @@ describe Gol do
       num_of_iterations = 1
       expect(Gol.test_game(seed, num_of_iterations, expected_state)).to be_truthy
     end
-
-
-
   end
-
 end

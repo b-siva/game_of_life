@@ -26,5 +26,4 @@ class Cell
     @current_state = @value
     @future_state = @value
   end
-
 end

@@ -85,5 +85,4 @@ class Graph
   def is_safe?(i,j)
     i >= ZERO && i < @graph.length && j >= ZERO && j < @graph[i].length
   end
-
 end
