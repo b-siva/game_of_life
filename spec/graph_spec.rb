@@ -2,7 +2,7 @@
 #######################################################################################
 # File: graph_spec.rb                                                                 #
 # Author: Sivaprakasam Boopathy                                                       #
-# Description: This is spec for graph                                                 #
+# Description: Spec for graph                                                         #
 # Date Created: 08/21/2017                                                            #
 # Date Updated: 08/21/2017                                                            #
 #######################################################################################

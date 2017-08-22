@@ -2,7 +2,7 @@
 #######################################################################################
 # File: constants_spec.rb                                                             #
 # Author: Sivaprakasam Boopathy                                                       #
-# Description: This is spec for constants                                             #
+# Description: Spec for constants                                                     #
 # Date Created: 08/21/2017                                                            #
 # Date Updated: 08/21/2017                                                            #
 #######################################################################################

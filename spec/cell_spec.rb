@@ -2,7 +2,7 @@
 #######################################################################################
 # File: cell_spec.rb                                                                  #
 # Author: Sivaprakasam Boopathy                                                       #
-# Description: This is spec for cell                                                  #
+# Description: Spec for cell                                                          #
 # Date Created: 08/21/2017                                                            #
 # Date Updated: 08/21/2017                                                            #
 #######################################################################################
