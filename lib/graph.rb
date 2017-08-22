@@ -20,6 +20,7 @@ class Graph
 
   def game_of_life
     state_change('initial')
+    print_current_state
     iterate_n_times
     state_change('final')
     @graph
@@ -32,15 +33,15 @@ class Graph
   # final => This tranpose graph back to original with final state
   # new => This puts the graph in new state after each lookup completed on entire graph location
   def state_change(state)
-    @graph.each_with_index do |row, i|
-      row.each_with_index do |col, j|
+    @graph.each_with_index do |row, row_index|
+      row.each_with_index do |col, col_index|
         case state
         when 'initial'
-          @graph[i][j] = Cell.new(@graph[i][j])
+          @graph[row_index][col_index] = Cell.new(@graph[row_index][col_index])
         when 'final'
-          @graph[i][j] = @graph[i][j].current_state
+          @graph[row_index][col_index] = @graph[row_index][col_index].current_state
         when 'new'
-          @graph[i][j].current_state = @graph[i][j].future_state
+          @graph[row_index][col_index].current_state = @graph[row_index][col_index].future_state
         end
       end
     end
@@ -48,41 +49,56 @@ class Graph
 
   #iterate for n times for state change
   def iterate_n_times
-    i = ZERO
-    while i < @iterations do
+    num_of_times = ZERO
+    while num_of_times < @iterations do
       iterate
       state_change('new')
-      i += ONE
+      print_current_state
+      num_of_times += ONE
     end
   end
 
   # iterate each location
   def iterate
-    @graph.each_with_index do |row, i|
-      row.each_with_index do |col, j|
-        live_neighbors = evaluate_neighbours(i,j)
-        if @graph[i][j].dead? && live_neighbors == THREE
-          @graph[i][j].future_state = ONE
+    @graph.each_with_index do |row, row_index|
+      row.each_with_index do |col, col_index|
+        live_neighbors = evaluate_neighbours(row_index,col_index)
+        if @graph[row_index][col_index].dead? && live_neighbors == THREE
+          @graph[row_index][col_index].future_state = ONE
         elsif live_neighbors < TWO || live_neighbors > THREE
-          @graph[i][j].future_state = ZERO
+          @graph[row_index][col_index].future_state = ZERO
         end
       end
     end
   end
 
   #look all neighbours
-  def evaluate_neighbours(i, j)
+  def evaluate_neighbours(row_index, col_index)
     count = ZERO
     NEIGHBOURS.each do |location|
-      row = location.first + i
-      col = location.last + j
+      row = location.first + row_index
+      col = location.last + col_index
       count += ONE if is_safe?(row,col) && @graph[row][col].alive?
     end
     count
   end
 
   # Row and Col safty check for lookup
-  def is_safe?(i,j)
-    i >= ZERO && i < @graph.length && j >= ZERO && j < @graph[i].length
+  def is_safe?(row_index,col_index)
+    row_index >= ZERO && row_index < @graph.length && col_index >= ZERO && col_index < @graph[row_index].length
+  end
+
+  # Print current state in each iteration
+  # TODO - private method for now, make it public if it needs accessed outside
+  def print_current_state
+    puts "\nCurrent State:"
+    puts "---------------"
+    @graph.each_with_index do |row, row_index|
+      row.each_with_index do |col, col_index|
+        # This check takes care if it's called before and after Cell class conversion
+        print @graph[row_index][col_index].is_a?(Cell) ? @graph[row_index][col_index].current_state : @graph[row_index][col_index]
+      end
+      puts
+    end
   end
 end
